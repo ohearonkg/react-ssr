@@ -9,8 +9,8 @@
     "styleguide": "npx styleguidist server",
     "test": "jest --no-cache",
     "build": "webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "dev:build:server": "webpack --config webpack.server.js"
+    "watch-frontend": "webpack-dev-server --open --config webpack.dev.js",
+    "watch-server": "webpack --watch --config webpack.server.js"
   },
   "husky": {
     "hooks": {
@@ -72,6 +72,7 @@
     "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
     "jest-emotion": "^9.2.6",
+    "nodemon-webpack-plugin": "^4.0.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6"
