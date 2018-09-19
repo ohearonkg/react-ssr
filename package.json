@@ -8,9 +8,9 @@
   "scripts": {
     "styleguide": "npx styleguidist server",
     "test": "jest --no-cache",
-    "build": "webpack --config webpack.prod.js",
-    "watch-frontend": "webpack-dev-server --open --config webpack.dev.js",
-    "watch-server": "webpack --watch --config webpack.server.js"
+    "watch-frontend": "webpack --watch --config webpack.dev.js",
+    "watch-server": "webpack --watch --config webpack.server.js",
+    "build-server": "webpack --config webpack.server.js"
   },
   "husky": {
     "hooks": {

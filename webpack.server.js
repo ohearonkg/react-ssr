@@ -13,7 +13,7 @@ module.exports = {
    * The root file of our server
    * application
    */
-  entry: "./server/src/Index.tsx",
+  entry: "./server/src/Index.ts",
 
   /**
    * Transform our typescript into
@@ -39,8 +39,7 @@ module.exports = {
    * be placed
    */
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "/server/build")
+    filename: "server.bundle.js"
   },
 
   /**
