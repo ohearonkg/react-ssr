@@ -1,10 +1,15 @@
 import * as React from "react";
 // tslint:disable-next-line
 import { renderToString } from "react-dom/server";
-import Home from "../../client/src/components/Home";
+import { StaticRouter } from "react-router-dom";
+import Routes from "../../Routes";
 
 export default () => {
-  const content = renderToString(<Home />);
+  const content = renderToString(
+    <StaticRouter>
+      <Routes />
+    </StaticRouter>
+  );
 
   return `
     <html>
