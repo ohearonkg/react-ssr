@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component Should match its snapshot 1`] = `
+<h2>
+   I am loading something 
+</h2>
+`;
