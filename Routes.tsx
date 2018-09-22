@@ -10,7 +10,23 @@ import Home from "./client/src/components/Home";
  * for use on the client
  */
 export default () => (
-  <Switch>
-    <Route exact path="/" component={Home} />;
-  </Switch>
+  <div>
+    <div>
+      <div>
+        <a href="/">Home</a>
+      </div>
+      <div>
+        <a href="/about">About</a>
+      </div>
+      <div>
+        <a href="/posts">Posts</a>
+      </div>
+    </div>
+
+    <Switch>
+      <Route exact path="/" component={Home} />;
+      <Route path="/about" render={() => <h1> About Page Here</h1>} />
+      <Route path="/posts" render={() => <h1> Some Posts</h1>} />
+    </Switch>
+  </div>
 );
