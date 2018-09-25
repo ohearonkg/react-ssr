@@ -1,14 +1,18 @@
 import * as React from "react";
 // tslint:disable-next-line
 import { renderToString } from "react-dom/server";
+import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
+import { Store } from "redux";
 import Routes from "../../Routes";
 
-export default (requestUrl: string) => {
+export default (requestUrl: string, store: Store) => {
   const content = renderToString(
-    <StaticRouter location={requestUrl} context={{}}>
-      <Routes />
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={requestUrl} context={{}}>
+        <Routes />
+      </StaticRouter>
+    </Provider>
   );
 
   return `
