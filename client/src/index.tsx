@@ -6,12 +6,12 @@ import { applyMiddleware, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import Routes from "../../Routes";
 
-import reducer from "./reducers";
-import mySaga from "./sagas";
+import reducer from "./reducers/Users/users";
+import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 hydrate(
   <Provider store={store}>
