@@ -14,32 +14,20 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tslint --config ./tslint.json --project ./tsconfig.json && yarn prettier --config ./.prettierrc --write",
+      "pre-commit":
+        "tslint --config ./tslint.json --project ./tsconfig.json && yarn prettier --config ./.prettierrc --write",
       "pre-push": "yarn test"
     }
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "useBabelrc": true,
-        "tsConfigFile": "./tsconfig.json"
-      }
-    },
-    "setupFiles": [
-      "<rootDir>/test-shim.js",
-      "<rootDir>/test-setup.js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "preset": "ts-jest",
+    "setupFiles": ["<rootDir>/test-shim.js", "<rootDir>/test-setup.js"],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testMatch": [
-      "**/*.spec.(ts|tsx|js)"
-    ]
+    "testMatch": ["**/*.spec.(ts|tsx|js)"]
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.12",
