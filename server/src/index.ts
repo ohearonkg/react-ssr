@@ -1,11 +1,14 @@
-import * as express from "express";
+import express, { Request, Response } from "express";
+import createStore from "../helpers/createStore";
 import renderer from "../helpers/renderer";
 
 const app = express();
 app.use(express.static("dist"));
 
-app.get("*", (req, res) => {
-  res.send(renderer(req.url));
+app.get("*", (req: Request, res: Response) => {
+  const store = createStore();
+  // Some logic to go here
+  res.send(renderer(req.url, store));
 });
 
 app.listen(3000, () => {

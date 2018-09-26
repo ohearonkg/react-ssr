@@ -26,9 +26,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx/,
+        test: /\.tsx?$/,
         loader: [
-          "babel-loader",
           "awesome-typescript-loader?configFileName=tsconfig.server.json"
         ]
       }

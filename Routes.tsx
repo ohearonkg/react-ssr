@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
 import Home from "./client/src/components/Home/Home";
+import UserList from "./client/src/components/UsersList/UserList";
 
 /**
  * This componet is responsible for
@@ -10,23 +11,8 @@ import Home from "./client/src/components/Home/Home";
  * for use on the client
  */
 export default () => (
-  <div>
-    <div>
-      <div>
-        <a href="/">Home</a>
-      </div>
-      <div>
-        <a href="/about">About</a>
-      </div>
-      <div>
-        <a href="/posts">Posts</a>
-      </div>
-    </div>
-
-    <Switch>
-      <Route exact path="/" component={Home} />;
-      <Route path="/about" render={() => <h1> About Page Here</h1>} />
-      <Route path="/posts" render={() => <h1> Some Posts</h1>} />
-    </Switch>
-  </div>
+  <Switch>
+    <Route exact path="/" component={Home} />;
+    <Route path="/users" component={UserList} />
+  </Switch>
 );
