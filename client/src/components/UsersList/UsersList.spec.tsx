@@ -7,7 +7,24 @@ describe("Users List", () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<UserList />);
+    wrapper = shallow(
+      <UserList
+        users={[
+          {
+            id: 1,
+            name: "a"
+          },
+          {
+            id: 2,
+            name: "b"
+          },
+          {
+            id: 3,
+            name: "c"
+          }
+        ]}
+      />
+    );
   });
 
   /**
@@ -15,5 +32,12 @@ describe("Users List", () => {
    */
   it("Should match its snapshot", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  /**
+   * Showing list of users
+   */
+  it("Should render a list of users passed to its users prop", () => {
+    expect(wrapper.find("li")).toHaveLength(3);
   });
 });

@@ -1,7 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Users List Should match its snapshot 1`] = `
-<h1>
-   Hello 
-</h1>
+<ul>
+   
+  <li
+    key="1"
+  >
+     
+    a
+     
+  </li>
+  <li
+    key="2"
+  >
+     
+    b
+     
+  </li>
+  <li
+    key="3"
+  >
+     
+    c
+     
+  </li>
+   
+</ul>
 `;
