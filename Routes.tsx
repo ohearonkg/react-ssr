@@ -10,9 +10,16 @@ import UserList from "./client/src/components/UsersList/UserList";
  * for use on the server, and within a <BrowserRouter />
  * for use on the client
  */
-export default () => (
-  <Switch>
-    <Route exact path="/" component={Home} />;
-    <Route path="/users" component={UserList} />
-  </Switch>
-);
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: Home
+  },
+  {
+    path: "/users",
+    component: UserList
+  }
+];
+
+export default routes;

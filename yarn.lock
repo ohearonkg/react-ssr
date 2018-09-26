@@ -160,6 +160,14 @@
     "@types/react" "*"
     redux "^4.0.0"
 
+"@types/react-router-config@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@types/react-router-config/-/react-router-config-1.0.9.tgz#ffbf90ca30f4ee1617fdf8b8d7ec421958196b1a"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
 "@types/react-router-dom@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.3.1.tgz#71fe2918f8f60474a891520def40a63997dafe04"
@@ -6131,6 +6139,10 @@ react-redux@^5.0.7:
     lodash-es "^4.17.5"
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
+
+react-router-config@^1.0.0-beta.4:
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-1.0.0-beta.4.tgz#d202496dd0eabdf06cf24eb0793031f6891eef01"
 
 react-router-dom@^4.3.1:
   version "4.3.1"
