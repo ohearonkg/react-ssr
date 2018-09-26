@@ -6,7 +6,7 @@ import { applyMiddleware, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import Routes from "../../Routes";
 
-import reducer from "./reducers/Users/users";
+import reducer from "./reducers";
 import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
