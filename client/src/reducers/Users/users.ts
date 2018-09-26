@@ -9,7 +9,7 @@ import { IUser } from "../../models/User";
 
 type UsersAction = ActionType<typeof userActions>;
 
-interface IUsersState {
+export interface IUsersState {
   loadingUsers: boolean;
   users: IUser[];
   error: Error;

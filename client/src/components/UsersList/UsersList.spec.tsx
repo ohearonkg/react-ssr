@@ -1,7 +1,7 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import toJson from "enzyme-to-json";
 import * as React from "react";
-import UserList from "./UserList";
+import { UserList } from "./UserList";
 
 describe("Users List", () => {
   let wrapper: ShallowWrapper;
