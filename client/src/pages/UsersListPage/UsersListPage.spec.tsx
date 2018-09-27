@@ -1,14 +1,14 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import toJson from "enzyme-to-json";
 import * as React from "react";
-import { UserList } from "./UserList";
+import { UserListPage } from "./UserListPage";
 
-describe("Users List", () => {
+describe("Users List Page", () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
     wrapper = shallow(
-      <UserList
+      <UserListPage
         users={[
           {
             id: 1,

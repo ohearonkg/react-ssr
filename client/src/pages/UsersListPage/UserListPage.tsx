@@ -6,14 +6,14 @@ import * as api from "../../api";
 import { IUser } from "../../models/User";
 import { ApplicationState } from "../../reducers";
 
-interface IUserList {
+interface IUserListPage {
   /**
    * Users to be rendered
    */
   users: IUser[];
 }
 
-const UserList = (props: IUserList) => {
+const UserListPage = (props: IUserListPage) => {
   const renderUsers = () => {
     return props.users.map((user: IUser) => (
       <li key={user.id}> {user.name} </li>
@@ -46,5 +46,5 @@ const loadData = (store: Store<ApplicationState>) => {
     .catch(err => store.dispatch(fetchUsers.failure(err)));
 };
 
-export { UserList, loadData };
-export default connect(mapStateToProps)(UserList);
+export { UserListPage, loadData };
+export default connect(mapStateToProps)(UserListPage);

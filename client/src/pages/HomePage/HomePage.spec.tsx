@@ -1,11 +1,11 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import toJson from "enzyme-to-json";
 import * as React from "react";
-import Home from "./Home";
+import HomePage from "./HomePage";
 
-describe("Home Component", () => {
+describe("Home Page", () => {
   let wrapper: ShallowWrapper;
-  beforeEach(() => (wrapper = shallow(<Home />)));
+  beforeEach(() => (wrapper = shallow(<HomePage />)));
 
   /**
    * Snapshot
