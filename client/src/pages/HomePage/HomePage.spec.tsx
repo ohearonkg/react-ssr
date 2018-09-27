@@ -5,7 +5,7 @@ import HomePage from "./HomePage";
 
 describe("Home Page", () => {
   let wrapper: ShallowWrapper;
-  beforeEach(() => (wrapper = shallow(<HomePage />)));
+  beforeEach(() => (wrapper = shallow(<HomePage.component />)));
 
   /**
    * Snapshot

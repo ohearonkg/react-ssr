@@ -1,3 +1,4 @@
+import serialize from "javascript-serialize";
 import * as React from "react";
 // tslint:disable-next-line
 import { renderToString } from "react-dom/server";
@@ -24,10 +25,7 @@ export default (requestUrl: string, store: Store) => {
       <body>
         <div id="root">${content}</div>
         <script>
-         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
-           /</g,
-           "\\u003c"
-         )}
+         window.__PRELOADED_STATE__ = ${serialize(preloadedState)}
          </script>
         <script src="client.bundle.js"></script>
       </body>
