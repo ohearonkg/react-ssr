@@ -1,8 +1,5 @@
-import * as React from "react";
 import HomePage from "./client/src/pages/HomePage/HomePage";
-import UserListPage, {
-  loadData
-} from "./client/src/pages/UsersListPage/UserListPage";
+import UserListPage from "./client/src/pages/UsersListPage/UserListPage";
 
 /**
  * This componet is responsible for
@@ -13,14 +10,13 @@ import UserListPage, {
  */
 const routes = [
   {
+    ...HomePage,
     path: "/",
-    exact: true,
-    component: HomePage
+    exact: true
   },
   {
-    path: "/users",
-    component: UserListPage,
-    loadData
+    ...UserListPage,
+    path: "/users"
   }
 ];
 

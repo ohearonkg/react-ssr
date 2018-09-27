@@ -46,5 +46,9 @@ const loadData = (store: Store<ApplicationState>) => {
     .catch(err => store.dispatch(fetchUsers.failure(err)));
 };
 
-export { UserListPage, loadData };
-export default connect(mapStateToProps)(UserListPage);
+export { UserListPage };
+
+export default {
+  component: connect(mapStateToProps)(UserListPage),
+  loadData
+};
