@@ -16,11 +16,19 @@ export default (requestUrl: string, store: Store) => {
     </Provider>
   );
 
+  const preloadedState = store.getState();
+
   return `
     <html>
       <head></head>
       <body>
         <div id="root">${content}</div>
+        <script>
+         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+           /</g,
+           "\\u003c"
+         )}
+         </script>
         <script src="client.bundle.js"></script>
       </body>
     </html>

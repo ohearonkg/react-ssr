@@ -11,7 +11,7 @@ import { IUser } from "../../models/User";
 export function* fetchUsers() {
   try {
     const users: IUser[] = yield call(api.fetchUsers);
-    yield put({ type: FETCH_USERS_SUCCESS, users });
+    yield put({ type: FETCH_USERS_SUCCESS, payload: users });
   } catch (e) {
     yield put({ type: FETCH_USERS_FAILURE, e });
   }
