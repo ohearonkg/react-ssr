@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import proxy from "http-proxy-middleware";
+import proxy from "express-http-proxy";
 import { matchRoutes } from "react-router-config";
 import Routes from "../../Routes";
 import createStore from "../helpers/createStore";
@@ -11,11 +11,7 @@ const app = express();
  * Proxy any requests to /api
  * onto our api server
  */
-app.use(
-  proxy("/api", {
-    target: "http://react-ssr-api.herokuapp.com"
-  })
-);
+app.use("/api", proxy("http://react-ssr-api.herokuapp.com"));
 
 /**
  * Allowing express to use
@@ -24,7 +20,7 @@ app.use(
 app.use(express.static("dist"));
 
 app.get("*", (req: Request, res: Response) => {
-  const store = createStore();
+  const store = createStore(req);
 
   const matchedRoutes = matchRoutes(Routes, req.url);
 

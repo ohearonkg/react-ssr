@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
 import * as React from "react";
 import { connect } from "react-redux";
-import { AnyAction, Store } from "redux";
+import { AnyAction, Dispatch, Store } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { fetchUsersFunction } from "../../actions/Users/users";
 import { IUser } from "../../models/User";
@@ -12,20 +12,32 @@ interface IUserListPage {
    * Users to be rendered
    */
   users: IUser[];
+
+  /**
+   * Function to fetch users
+   */
+  fetchUsers: () => void;
 }
 
-const UserListPage = (props: IUserListPage) => {
-  const renderUsers = () => {
-    const { users } = props;
+class UserListPage extends React.Component<IUserListPage, {}> {
+
+  public componentDidMount() {
+    this.props.fetchUsers()
+  }
+
+  public renderUsers = () => {
+    const { users } = this.props;
     return users.map((user: IUser) => <li key={user.id}> {user.name} </li>);
   };
 
+  public render() {
   return (
     <div>
       <h1> User List </h1>
-      <ul> {renderUsers()} </ul>
+      <ul> {this.renderUsers()} </ul>
     </div>
-  );
+  )
+}
 };
 
 const mapStateToProps = (state: ApplicationState) => {
@@ -33,6 +45,13 @@ const mapStateToProps = (state: ApplicationState) => {
     users: state.users.users
   };
 };
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    // @ts-ignore
+    fetchUsers: () => dispatch(fetchUsersFunction())
+  }
+}
 
 /**
  * Thunk called to load data on the
@@ -51,6 +70,6 @@ const loadData = (
 export { UserListPage };
 
 export default {
-  component: connect(mapStateToProps)(UserListPage),
+  component: connect(mapStateToProps, mapDispatchToProps)(UserListPage),
   loadData
 };

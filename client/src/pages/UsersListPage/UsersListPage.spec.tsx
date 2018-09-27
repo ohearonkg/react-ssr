@@ -9,6 +9,9 @@ describe("Users List Page", () => {
   beforeEach(() => {
     wrapper = shallow(
       <UserListPage
+        fetchUsers={() => {
+          return;
+        }}
         users={[
           {
             id: 1,
