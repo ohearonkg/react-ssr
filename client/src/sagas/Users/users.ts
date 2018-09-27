@@ -5,12 +5,11 @@ import {
   FETCH_USERS_STARTED,
   FETCH_USERS_SUCCESS
 } from "../../actions/Users/constants";
-import * as api from "../../api";
 import { IUser } from "../../models/User";
 
 export function* fetchUsers() {
   try {
-    const users: IUser[] = yield call(api.fetchUsers);
+    const users: IUser[] = yield call(() => "HI");
     yield put({ type: FETCH_USERS_SUCCESS, payload: users });
   } catch (e) {
     yield put({ type: FETCH_USERS_FAILURE, e });
