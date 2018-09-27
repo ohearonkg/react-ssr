@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Route, Switch } from "react-router";
 import Home from "./client/src/components/Home/Home";
-import UserList from "./client/src/components/UsersList/UserList";
+import UserList, { loadData } from "./client/src/components/UsersList/UserList";
 
 /**
  * This componet is responsible for
@@ -10,9 +9,17 @@ import UserList from "./client/src/components/UsersList/UserList";
  * for use on the server, and within a <BrowserRouter />
  * for use on the client
  */
-export default () => (
-  <Switch>
-    <Route exact path="/" component={Home} />;
-    <Route path="/users" component={UserList} />
-  </Switch>
-);
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: Home
+  },
+  {
+    path: "/users",
+    component: UserList,
+    loadData
+  }
+];
+
+export default routes;

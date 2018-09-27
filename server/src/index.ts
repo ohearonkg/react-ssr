@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+import { matchRoutes } from "react-router-config";
+import Routes from "../../Routes";
 import createStore from "../helpers/createStore";
 import renderer from "../helpers/renderer";
 
@@ -7,8 +9,28 @@ app.use(express.static("dist"));
 
 app.get("*", (req: Request, res: Response) => {
   const store = createStore();
-  // Some logic to go here
-  res.send(renderer(req.url, store));
+
+  const matchedRoutes = matchRoutes(Routes, req.url);
+
+  /**
+   * Array of promises to be called to retrieve data
+   * before information is sent to the clientpassing
+   * the store created to each loadData function so
+   * that redux actions may be dispatched
+   */
+  const loadDataFunction = matchedRoutes.map(
+    (match: any) => (match.route.loadData ? match.route.loadData(store) : null)
+  );
+
+  /**
+   * Await all promises to resolve then
+   * render our content with our redux store
+   * containing any desired server side fetched
+   * data
+   */
+  Promise.all(loadDataFunction).then(() => {
+    res.send(renderer(req.url, store));
+  });
 });
 
 app.listen(3000, () => {
