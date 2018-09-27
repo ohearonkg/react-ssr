@@ -10,7 +10,6 @@ import Routes from "../../Routes";
 
 import reducer from "./reducers";
 
-
 // Grab the state from a global variable injected into the server-generated HTML
 // @ts-ignore
 const preloadedState = window.__PRELOADED_STATE__
