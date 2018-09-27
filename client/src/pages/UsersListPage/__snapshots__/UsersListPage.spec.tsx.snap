@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Users List Should match its snapshot 1`] = `
+exports[`Users List Page Should match its snapshot 1`] = `
 <div>
   <h1>
      User List 
