@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Should match its snapshot 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "width": "100%",
+    }
+  }
+>
+  <div>
+    React SSR
+  </div>
+</div>
+`;
