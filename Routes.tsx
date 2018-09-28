@@ -1,3 +1,4 @@
+import App from "./client/src/App";
 import HomePage from "./client/src/pages/HomePage/HomePage";
 import UserListPage from "./client/src/pages/UsersListPage/UserListPage";
 
@@ -10,13 +11,18 @@ import UserListPage from "./client/src/pages/UsersListPage/UserListPage";
  */
 const routes = [
   {
-    ...HomePage,
-    path: "/",
-    exact: true
-  },
-  {
-    ...UserListPage,
-    path: "/users"
+    ...App,
+    routes: [
+      {
+        ...HomePage,
+        path: "/",
+        exact: true
+      },
+      {
+        ...UserListPage,
+        path: "/users"
+      }
+    ]
   }
 ];
 
