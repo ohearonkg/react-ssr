@@ -1,4 +1,6 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { ApplicationState } from "../../reducers";
 
 const wrapperStyles = {
   width: "100%",
@@ -23,10 +25,10 @@ interface IHeaderProps {
    * Is there a currently logged
    * in user
    */
-  isAuthenticated?: boolean;
+  isAuthenticated: boolean;
 }
 
-export default (props: IHeaderProps) => {
+const Header = (props: IHeaderProps) => {
   const { isAuthenticated } = props;
 
   return (
@@ -34,23 +36,23 @@ export default (props: IHeaderProps) => {
       <div>React SSR</div>
       {isAuthenticated === true && (
         <nav style={navItemsWrapperStyles}>
-          <a style={navLinkStyles} href="#">
+          <a style={navLinkStyles} href="/">
             Home
           </a>
-          <a style={navLinkStyles} href="#">
+          <a style={navLinkStyles} href="/users">
             User List
           </a>
-          <a style={navLinkStyles} href="#">
+          <a style={navLinkStyles} href="/admins">
             Admin List
           </a>
-          <a style={navLinkStyles} href="#">
+          <a style={navLinkStyles} href="/api/logout">
             Log Out
           </a>
         </nav>
       )}
       {isAuthenticated === false && (
         <nav style={navItemsWrapperStyles}>
-          <a style={navLinkStyles} href="#">
+          <a style={navLinkStyles} href="/api/auth/google">
             Login
           </a>
         </nav>
@@ -58,3 +60,13 @@ export default (props: IHeaderProps) => {
     </div>
   );
 };
+
+export { Header };
+
+const mapStateToProps = (state: ApplicationState) => {
+  return {
+    isAuthenticated: state.authentication.currentUser !== null
+  };
+};
+
+export default connect(mapStateToProps)(Header);

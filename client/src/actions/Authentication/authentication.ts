@@ -18,8 +18,8 @@ export const fetchAuthenticationState = () => {
   return (dispatch: Dispatch, getState: () => void, api: AxiosInstance) => {
     dispatch(authentication.request());
     return api
-      .get("/currentUser")
-      .then(res => res.data)
+      .get("/current_user")
+      .then(res => res.data || null)
       .then(data => dispatch(authentication.success(data)))
       .catch(err => dispatch(authentication.failure(err)));
   };
