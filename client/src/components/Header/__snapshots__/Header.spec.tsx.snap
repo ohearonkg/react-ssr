@@ -11,7 +11,7 @@ exports[`Header Component Should match its snapshot 1`] = `
       "entries": Array [
         Object {
           "hash": "",
-          "key": "82bzz5",
+          "key": "e1586k",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -25,7 +25,7 @@ exports[`Header Component Should match its snapshot 1`] = `
       "listen": [Function],
       "location": Object {
         "hash": "",
-        "key": "82bzz5",
+        "key": "e1586k",
         "pathname": "/",
         "search": "",
         "state": undefined,
