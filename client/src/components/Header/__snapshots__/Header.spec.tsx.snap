@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Should match its snapshot 1`] = `
+<Header
+  isAuthenticated={false}
+/>
+`;

@@ -1,3 +1,4 @@
+import axios from "axios";
 import * as React from "react";
 import { hydrate } from "react-dom";
 import { Provider } from "react-redux";
@@ -10,16 +11,31 @@ import Routes from "../../Routes";
 
 import reducer from "./reducers";
 
+/**
+ * Create our client side axios instance.
+ * We are on the server, so we MUST proxy
+ * our request
+ */
+const clientAxiosInstance = axios.create({
+  baseURL: "/api"
+});
+
 // Grab the state from a global variable injected into the server-generated HTML
 // @ts-ignore
-const preloadedState = window.__PRELOADED_STATE__
-​
+const preloadedState = window.__PRELOADED_STATE__;
+
 // Allow the passed state to be garbage-collected
 // @ts-ignore
-delete window.__PRELOADED_STATE__
-​
+delete window.__PRELOADED_STATE__;
+
 // Create Redux store with initial state
-const store = createStore(reducer, preloadedState, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(
+  reducer,
+  preloadedState,
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(clientAxiosInstance))
+  )
+);
 
 hydrate(
   <Provider store={store}>

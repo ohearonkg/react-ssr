@@ -1,14 +1,34 @@
 import express, { Request, Response } from "express";
+import proxy from "express-http-proxy";
 import { matchRoutes } from "react-router-config";
 import Routes from "../../Routes";
 import createStore from "../helpers/createStore";
 import renderer from "../helpers/renderer";
 
 const app = express();
+
+/**
+ * Proxy any requests to /api
+ * onto our api server
+ */
+app.use(
+  "/api",
+  proxy("http://react-ssr-api.herokuapp.com", {
+    proxyReqOptDecorator(opts: any) {
+      opts.headers["x-forwarded-host"] = "localhost:3000";
+      return opts;
+    }
+  })
+);
+
+/**
+ * Allowing express to use
+ * the static dist output folder
+ */
 app.use(express.static("dist"));
 
 app.get("*", (req: Request, res: Response) => {
-  const store = createStore();
+  const store = createStore(req);
 
   const matchedRoutes = matchRoutes(Routes, req.url);
 
@@ -28,9 +48,7 @@ app.get("*", (req: Request, res: Response) => {
    * containing any desired server side fetched
    * data
    */
-  Promise.all(loadDataFunction).then(() => {
-    res.send(renderer(req.url, store));
-  });
+  Promise.all(loadDataFunction).then(() => res.send(renderer(req.url, store)));
 });
 
 app.listen(3000, () => {

@@ -75,6 +75,7 @@
     "enzyme": "^3.3.0",
     "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
+    "express-http-proxy": "^1.4.0",
     "javascript-serialize": "^1.6.1",
     "nodemon-webpack-plugin": "^4.0.3",
     "react": "^16.4.1",
