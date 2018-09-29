@@ -17,7 +17,7 @@ describe("Header Component", () => {
       </MemoryRouter>
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(toJson(wrapper.dive())).toMatchSnapshot();
   });
 
   /**
