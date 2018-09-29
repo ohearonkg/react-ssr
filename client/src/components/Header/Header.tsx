@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { ApplicationState } from "../../reducers";
 
 const wrapperStyles = {
@@ -36,15 +37,15 @@ const Header = (props: IHeaderProps) => {
       <div>React SSR</div>
       {isAuthenticated === true && (
         <nav style={navItemsWrapperStyles}>
-          <a style={navLinkStyles} href="/">
+          <Link style={navLinkStyles} to="/">
             Home
-          </a>
-          <a style={navLinkStyles} href="/users">
+          </Link>
+          <Link style={navLinkStyles} to="/users">
             User List
-          </a>
-          <a style={navLinkStyles} href="/admins">
+          </Link>
+          <Link style={navLinkStyles} to="/admins">
             Admin List
-          </a>
+          </Link>
           <a style={navLinkStyles} href="/api/logout">
             Log Out
           </a>
