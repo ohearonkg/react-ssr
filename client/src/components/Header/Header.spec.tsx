@@ -1,18 +1,22 @@
 import { shallow, ShallowWrapper } from "enzyme";
 import toJson from "enzyme-to-json";
 import * as React from "react";
-import Header from "./Header";
+import { MemoryRouter } from "react-router";
+import { Header } from "./Header";
 
 describe("Header Component", () => {
   let wrapper: ShallowWrapper;
-  beforeEach(() => {
-    wrapper = shallow(<Header />);
-  });
 
   /**
    * Snapshot
    */
   it("Should match its snapshot", () => {
+    wrapper = shallow(
+      <MemoryRouter>
+        <Header isAuthenticated={false} />
+      </MemoryRouter>
+    );
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -20,12 +24,20 @@ describe("Header Component", () => {
    * Render Login button
    */
   it("Should render a login button if its prop value of isAuthenticated is false", () => {
-    wrapper.setProps({ isAuthenticated: false });
+    wrapper = shallow(
+      <MemoryRouter>
+        <Header isAuthenticated={false} />
+      </MemoryRouter>
+    );
     expect(wrapper.html()).toMatch("Login");
   });
 
   it("Should NOT render a logout button if its prop value of isAuthenticated is false", () => {
-    wrapper.setProps({ isAuthenticated: false });
+    wrapper = shallow(
+      <MemoryRouter>
+        <Header isAuthenticated={false} />
+      </MemoryRouter>
+    );
     expect(wrapper.html()).not.toMatch("Log Out");
   });
 
@@ -33,12 +45,20 @@ describe("Header Component", () => {
    * Render Logout Button
    */
   it("Should render a Logout button if its prop value of isAuthenticated is true", () => {
-    wrapper.setProps({ isAuthenticated: true });
+    wrapper = shallow(
+      <MemoryRouter>
+        <Header isAuthenticated={true} />
+      </MemoryRouter>
+    );
     expect(wrapper.html()).toMatch("Log Out");
   });
 
   it("Should NOT render a Login button if its prop value of isAuthenticated is true", () => {
-    wrapper.setProps({ isAuthenticated: true });
+    wrapper = shallow(
+      <MemoryRouter>
+        <Header isAuthenticated={true} />
+      </MemoryRouter>
+    );
     expect(wrapper.html()).not.toMatch("Login");
   });
 });

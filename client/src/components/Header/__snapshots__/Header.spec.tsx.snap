@@ -1,17 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Component Should match its snapshot 1`] = `
-<div
-  style={
+<Router
+  history={
     Object {
-      "alignItems": "center",
-      "display": "flex",
-      "width": "100%",
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "7084fw",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "7084fw",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
     }
   }
 >
-  <div>
-    React SSR
-  </div>
-</div>
+  <Header
+    isAuthenticated={false}
+  />
+</Router>
 `;
