@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import proxy from "express-http-proxy";
+import { StaticRouterContext } from "react-router";
 import { matchRoutes } from "react-router-config";
 import Routes from "../../Routes";
 import createStore from "../helpers/createStore";
@@ -48,7 +49,23 @@ app.get("*", (req: Request, res: Response) => {
    * containing any desired server side fetched
    * data
    */
-  Promise.all(loadDataFunction).then(() => res.send(renderer(req.url, store)));
+  Promise.all(loadDataFunction).then(() => {
+    /**
+     * The conext variable used by react router
+     * allows us to mark routes as not found
+     * so that we may send an appropriate 404
+     * status code to the user's browser
+     */
+    const context = {};
+    const content = renderer(req.url, store, context);
+
+    // @ts-ignore
+    if (context.notFound) {
+      res.status(404);
+    }
+
+    res.send(content);
+  });
 });
 
 app.listen(3000, () => {
