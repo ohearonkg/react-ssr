@@ -1,5 +1,6 @@
 import App from "./client/src/App";
 import HomePage from "./client/src/pages/HomePage/HomePage";
+import NotFoundPage from "./client/src/pages/NotFoundPage/NotFoundPage";
 import UserListPage from "./client/src/pages/UsersListPage/UserListPage";
 
 /**
@@ -21,6 +22,9 @@ const routes = [
       {
         ...UserListPage,
         path: "/users"
+      },
+      {
+        ...NotFoundPage
       }
     ]
   }
