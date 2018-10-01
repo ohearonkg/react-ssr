@@ -20,9 +20,8 @@ interface IUserListPage {
 }
 
 class UserListPage extends React.Component<IUserListPage, {}> {
-
   public componentDidMount() {
-    this.props.fetchUsers()
+    this.props.fetchUsers();
   }
 
   public renderUsers = () => {
@@ -31,14 +30,14 @@ class UserListPage extends React.Component<IUserListPage, {}> {
   };
 
   public render() {
-  return (
-    <div>
-      <h1> User List </h1>
-      <ul> {this.renderUsers()} </ul>
-    </div>
-  )
+    return (
+      <div>
+        <h1> User List </h1>
+        <ul> {this.renderUsers()} </ul>
+      </div>
+    );
+  }
 }
-};
 
 const mapStateToProps = (state: ApplicationState) => {
   return {
@@ -50,8 +49,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     // @ts-ignore
     fetchUsers: () => dispatch(fetchUsersFunction())
-  }
-}
+  };
+};
 
 /**
  * Thunk called to load data on the
@@ -63,13 +62,16 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
  */
 const loadData = (
   store: Store<ApplicationState, AnyAction> & {
-    dispatch: ThunkDispatch<{}, AxiosInstance, AnyAction>
+    dispatch: ThunkDispatch<{}, AxiosInstance, AnyAction>;
   }
 ) => store.dispatch(fetchUsersFunction());
 
 export { UserListPage };
 
 export default {
-  component: connect(mapStateToProps, mapDispatchToProps)(UserListPage),
+  component: connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(UserListPage),
   loadData
 };

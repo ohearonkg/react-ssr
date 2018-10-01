@@ -18,6 +18,12 @@
       }
     },
     {
+      "files": "*.tsx",
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
       "files": ".prettierrc",
       "options": {
         "parser": "json"

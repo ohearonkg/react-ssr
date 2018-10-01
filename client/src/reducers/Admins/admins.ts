@@ -1,4 +1,3 @@
-import { Switch } from "react-router";
 import { ActionType } from "typesafe-actions";
 import * as adminActions from "../../actions/Admins/admins";
 import {
