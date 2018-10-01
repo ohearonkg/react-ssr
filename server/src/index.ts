@@ -1,3 +1,4 @@
+import { rejects } from "assert";
 import express, { Request, Response } from "express";
 import proxy from "express-http-proxy";
 import { StaticRouterContext } from "react-router";
@@ -38,10 +39,24 @@ app.get("*", (req: Request, res: Response) => {
    * before information is sent to the clientpassing
    * the store created to each loadData function so
    * that redux actions may be dispatched
+   *
+   * We map each promise wrapping it in an additional
+   * promise so that REGARDLESS of if each promise resolves
+   * or rejects our promise.all call will show all promsies
+   * to be resolved and render content to th euser
    */
-  const loadDataFunction = matchedRoutes.map(
-    (match: any) => (match.route.loadData ? match.route.loadData(store) : null)
-  );
+  const loadDataFunction = matchedRoutes
+    .map(
+      (match: any) =>
+        match.route.loadData ? match.route.loadData(store) : null
+    )
+    .map((promise: any) => {
+      if (promise) {
+        return new Promise((resolve, reject) =>
+          promise.then(resolve).catch(resolve)
+        );
+      }
+    });
 
   /**
    * Await all promises to resolve then

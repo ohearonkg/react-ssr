@@ -29,7 +29,7 @@ interface IAdminsState {
 
 const IAdminsInitialState: IAdminsState = {
   loadingAdmins: false,
-  admins: null,
+  admins: [],
   error: null
 };
 
