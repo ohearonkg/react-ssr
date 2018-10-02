@@ -74,9 +74,22 @@ app.get("*", (req: Request, res: Response) => {
     const context = {};
     const content = renderer(req.url, store, context);
 
+    /**
+     * Requested Route is Not Found
+     */
     // @ts-ignore
     if (context.notFound) {
-      res.status(404);
+      return res.status(404);
+    }
+
+    /**
+     * The static router has rendered
+     * a redirect we must redirect the user
+     */
+    // @ts-ignore
+    if (context.url) {
+      // @ts-ignore
+      res.redirect(301, context.url);
     }
 
     res.send(content);
