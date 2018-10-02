@@ -1,7 +1,8 @@
 import App from "./client/src/App";
+import AdminsListPage from "./client/src/pages/AdminsListPage/AdminsListPage";
 import HomePage from "./client/src/pages/HomePage/HomePage";
+import NotFoundPage from "./client/src/pages/NotFoundPage/NotFoundPage";
 import UserListPage from "./client/src/pages/UsersListPage/UserListPage";
-
 /**
  * This componet is responsible for
  * defining the routes of our application
@@ -21,6 +22,13 @@ const routes = [
       {
         ...UserListPage,
         path: "/users"
+      },
+      {
+        ...AdminsListPage,
+        path: "/admins"
+      },
+      {
+        ...NotFoundPage
       }
     ]
   }

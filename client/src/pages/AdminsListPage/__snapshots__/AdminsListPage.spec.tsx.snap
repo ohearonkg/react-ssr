@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admins List Page Should match its snapshot 1`] = `
+<div>
+  <h1>
+     Protected Admins List
+  </h1>
+  <ul />
+</div>
+`;

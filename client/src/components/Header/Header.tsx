@@ -35,29 +35,27 @@ const Header = (props: IHeaderProps) => {
   return (
     <div style={wrapperStyles}>
       <div>React SSR</div>
-      {isAuthenticated === true && (
-        <nav style={navItemsWrapperStyles}>
-          <Link style={navLinkStyles} to="/">
-            Home
-          </Link>
-          <Link style={navLinkStyles} to="/users">
-            User List
-          </Link>
-          <Link style={navLinkStyles} to="/admins">
-            Admin List
-          </Link>
+      <nav style={navItemsWrapperStyles}>
+        <Link style={navLinkStyles} to="/">
+          Home
+        </Link>
+        <Link style={navLinkStyles} to="/users">
+          User List
+        </Link>
+        <Link style={navLinkStyles} to="/admins">
+          Admin List
+        </Link>
+        {isAuthenticated === true && (
           <a style={navLinkStyles} href="/api/logout">
             Log Out
           </a>
-        </nav>
-      )}
-      {isAuthenticated === false && (
-        <nav style={navItemsWrapperStyles}>
+        )}
+        {isAuthenticated === false && (
           <a style={navLinkStyles} href="/api/auth/google">
             Login
           </a>
-        </nav>
-      )}
+        )}
+      </nav>
     </div>
   );
 };
