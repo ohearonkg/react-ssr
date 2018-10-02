@@ -2,6 +2,18 @@
 
 exports[`Home Page Should match its snapshot 1`] = `
 <div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+       React SRR - Home 
+    </title>
+    <meta
+      content="React SSR - Home"
+      name="og:title"
+    />
+  </HelmetWrapper>
   I'm The Home Component
 </div>
 `;
