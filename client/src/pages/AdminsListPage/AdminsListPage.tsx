@@ -5,6 +5,7 @@ import { AnyAction, Dispatch, Store } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { fetchAdmins, fetchAdminsFunction } from "../../actions/Admins/admins";
 import { fetchUsersFunction } from "../../actions/Users/users";
+import RequireAuth from "../../hocs/RequireAuth/RequireAuth";
 import { IUser } from "../../models/User";
 import { ApplicationState } from "../../reducers";
 
@@ -73,6 +74,6 @@ export default {
   component: connect(
     mapStateToProps,
     mapDispatchToProps
-  )(AdminsListPage),
+  )(RequireAuth(AdminsListPage)),
   loadData
 };
