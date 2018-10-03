@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StaticRouterContext } from "react-router";
+import { Helmet } from "react-helmet";
 
 const NotFoundPage = (props: any) => {
   /**
@@ -9,7 +9,21 @@ const NotFoundPage = (props: any) => {
   if (props.staticContext) {
     props.staticContext.notFound = true;
   }
-  return <h1> Oops... I Can't Find What You're Looking For :( </h1>;
+  const buildHead = () => {
+    return (
+      <Helmet>
+        <title> React SRR - Home </title>
+        <meta name="og:title" content="React SSR - Home" />
+      </Helmet>
+    );
+  };
+
+  return (
+    <div>
+      {buildHead()}
+      <h1> Oops... I Can't Find What You're Looking For :( </h1>
+    </div>
+  );
 };
 
 export default {

@@ -2,6 +2,20 @@
 
 exports[`Users List Page Should match its snapshot 1`] = `
 <div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+       
+      React SSR - Users (3)
+       
+    </title>
+    <meta
+      content="React SSR - Users"
+      name="og:title"
+    />
+  </HelmetWrapper>
   <h1>
      User List 
   </h1>

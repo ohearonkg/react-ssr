@@ -2,6 +2,7 @@ import serialize from "javascript-serialize";
 import * as React from "react";
 // tslint:disable-next-line
 import { renderToString } from "react-dom/server";
+import { Helmet } from "react-helmet";
 import { Provider } from "react-redux";
 import { renderRoutes } from "react-router-config";
 import { StaticRouter } from "react-router-dom";
@@ -18,10 +19,14 @@ export default (requestUrl: string, store: Store, context: object) => {
   );
 
   const preloadedState = store.getState();
+  const helmet = Helmet.renderStatic();
 
   return `
     <html>
-      <head></head>
+      <head>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+      </head>
       <body>
         <div id="root">${content}</div>
         <script>

@@ -79,7 +79,7 @@ app.get("*", (req: Request, res: Response) => {
      */
     // @ts-ignore
     if (context.notFound) {
-      return res.status(404);
+      res.status(404);
     }
 
     /**

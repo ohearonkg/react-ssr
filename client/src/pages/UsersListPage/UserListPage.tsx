@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
 import * as React from "react";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { AnyAction, Dispatch, Store } from "redux";
 import { ThunkDispatch } from "redux-thunk";
@@ -29,9 +30,21 @@ class UserListPage extends React.Component<IUserListPage, {}> {
     return users.map((user: IUser) => <li key={user.id}> {user.name} </li>);
   };
 
+  public buildHead = () => {
+    const { users } = this.props;
+    const numberOfUsersFound = users.length;
+    return (
+      <Helmet>
+        <title> {`React SSR - Users (${numberOfUsersFound})`} </title>
+        <meta name="og:title" content="React SSR - Users" />
+      </Helmet>
+    );
+  };
+
   public render() {
     return (
       <div>
+        {this.buildHead()}
         <h1> User List </h1>
         <ul> {this.renderUsers()} </ul>
       </div>

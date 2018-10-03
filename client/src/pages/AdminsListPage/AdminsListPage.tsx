@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
 import * as React from "react";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { AnyAction, Dispatch, Store } from "redux";
 import { ThunkDispatch } from "redux-thunk";
@@ -32,9 +33,19 @@ class AdminsListPage extends React.Component<IAdminsListPageProps, {}> {
       <li key={admin.id}> {admin.name} </li>
     ));
 
+  public buildHead = () => {
+    return (
+      <Helmet>
+        <title> React SRR - Admins </title>
+        <meta name="og:title" content="React SSR - Home" />
+      </Helmet>
+    );
+  };
+
   public render() {
     return (
       <div>
+        {this.buildHead()}
         <h1> Protected Admins List</h1>
         <ul>{this.renderAdmins()}</ul>
       </div>
